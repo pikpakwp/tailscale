@@ -305,9 +305,9 @@ func (c *conn) nextAuthMethodCallback(cm gossh.ConnMetadata, prevErrors []error)
 		nextMethod = append(nextMethod, "publickey")
 	}
 
-	// The fake "tailscale" method is always appended to next so OpenSSH renders
+	// The fake "yuntailscale" method is always appended to next so OpenSSH renders
 	// that in parens as the final failure. (It also shows up in "ssh -v", etc)
-	nextMethod = append(nextMethod, "tailscale")
+	nextMethod = append(nextMethod, "yuntailscale")
 	return
 }
 
@@ -410,7 +410,7 @@ func (srv *server) newConn() (*conn, error) {
 	now := srv.now()
 	c.connID = fmt.Sprintf("ssh-conn-%s-%02x", now.UTC().Format("20060102T150405"), randBytes(5))
 	c.Server = &ssh.Server{
-		Version:              "Tailscale",
+		Version:              "Yuntailscale",
 		ServerConfigCallback: c.ServerConfig,
 
 		NoClientAuthHandler: c.NoClientAuthCallback,

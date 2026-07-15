@@ -43,7 +43,7 @@ const resolvconfLibcHookPath = "/etc/resolvconf/update-libc.d"
 
 // resolvconfHookPath is the name of the libc hook script we install
 // to force Tailscale's DNS config to take effect.
-var resolvconfHookPath = filepath.Join(resolvconfLibcHookPath, "tailscale")
+var resolvconfHookPath = filepath.Join(resolvconfLibcHookPath, "yuntailscale")
 
 // resolvconfManager manages DNS configuration using the Debian
 // implementation of the `resolvconf` program, written by Thomas Hood.

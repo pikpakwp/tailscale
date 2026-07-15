@@ -68,7 +68,7 @@ func BinaryDir(tb testing.TB) string {
 // If any test calls TailscaleBinary, there must be a TestMain function that calls
 // CleanupBinaries after all tests are complete.
 func TailscaleBinary(tb testing.TB) string {
-	return filepath.Join(BinaryDir(tb), "tailscale"+exe())
+	return filepath.Join(BinaryDir(tb), "yuntailscale"+exe())
 }
 
 // TailscaledBinary returns the path to the test tailscaled binary.

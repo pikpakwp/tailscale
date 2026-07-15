@@ -56,7 +56,7 @@ func TestLoadBalancerClass(t *testing.T) {
 		Spec: corev1.ServiceSpec{
 			ClusterIP:         "10.20.30.40",
 			Type:              corev1.ServiceTypeLoadBalancer,
-			LoadBalancerClass: ptr.To("tailscale"),
+			LoadBalancerClass: ptr.To("yuntailscale"),
 		},
 	})
 
@@ -93,7 +93,7 @@ func TestLoadBalancerClass(t *testing.T) {
 		Spec: corev1.ServiceSpec{
 			ClusterIP:         "10.20.30.40",
 			Type:              corev1.ServiceTypeLoadBalancer,
-			LoadBalancerClass: ptr.To("tailscale"),
+			LoadBalancerClass: ptr.To("yuntailscale"),
 		},
 		Status: corev1.ServiceStatus{
 			LoadBalancer: corev1.LoadBalancerStatus{
@@ -323,7 +323,7 @@ func TestAnnotationIntoLB(t *testing.T) {
 	mustUpdate(t, fc, "default", "test", func(s *corev1.Service) {
 		delete(s.ObjectMeta.Annotations, "tailscale.com/expose")
 		s.Spec.Type = corev1.ServiceTypeLoadBalancer
-		s.Spec.LoadBalancerClass = ptr.To("tailscale")
+		s.Spec.LoadBalancerClass = ptr.To("yuntailscale")
 	})
 	expectReconciled(t, sr, "default", "test")
 	// None of the proxy machinery should have changed...
@@ -345,7 +345,7 @@ func TestAnnotationIntoLB(t *testing.T) {
 		Spec: corev1.ServiceSpec{
 			ClusterIP:         "10.20.30.40",
 			Type:              corev1.ServiceTypeLoadBalancer,
-			LoadBalancerClass: ptr.To("tailscale"),
+			LoadBalancerClass: ptr.To("yuntailscale"),
 		},
 		Status: corev1.ServiceStatus{
 			LoadBalancer: corev1.LoadBalancerStatus{
@@ -390,7 +390,7 @@ func TestLBIntoAnnotation(t *testing.T) {
 		Spec: corev1.ServiceSpec{
 			ClusterIP:         "10.20.30.40",
 			Type:              corev1.ServiceTypeLoadBalancer,
-			LoadBalancerClass: ptr.To("tailscale"),
+			LoadBalancerClass: ptr.To("yuntailscale"),
 		},
 	})
 
@@ -427,7 +427,7 @@ func TestLBIntoAnnotation(t *testing.T) {
 		Spec: corev1.ServiceSpec{
 			ClusterIP:         "10.20.30.40",
 			Type:              corev1.ServiceTypeLoadBalancer,
-			LoadBalancerClass: ptr.To("tailscale"),
+			LoadBalancerClass: ptr.To("yuntailscale"),
 		},
 		Status: corev1.ServiceStatus{
 			LoadBalancer: corev1.LoadBalancerStatus{
@@ -571,7 +571,7 @@ func expectedSTS(stsName, secretName string) *appsv1.StatefulSet {
 					},
 					Containers: []v1.Container{
 						{
-							Name:  "tailscale",
+							Name:  "yuntailscale",
 							Image: "tailscale/tailscale",
 							Env: []v1.EnvVar{
 								{Name: "TS_USERSPACE", Value: "false"},

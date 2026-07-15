@@ -59,7 +59,7 @@ var DevMode bool
 func DefaultCertDir(leafDir string) string {
 	cacheDir, err := os.UserCacheDir()
 	if err == nil {
-		return filepath.Join(cacheDir, "tailscale", leafDir)
+		return filepath.Join(cacheDir, "yuntailscale", leafDir)
 	}
 	return ""
 }

@@ -71,7 +71,7 @@ func packageTypeWindows() string {
 		return ""
 	}
 	home, _ := os.UserHomeDir()
-	if strings.HasPrefix(exe, filepath.Join(home, "scoop", "apps", "tailscale")) {
+	if strings.HasPrefix(exe, filepath.Join(home, "scoop", "apps", "yuntailscale")) {
 		return "scoop"
 	}
 	dir := filepath.Dir(exe)

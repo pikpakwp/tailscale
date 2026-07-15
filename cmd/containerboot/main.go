@@ -38,7 +38,7 @@
 //     container starts.
 //
 // When running on Kubernetes, containerboot defaults to storing state in the
-// "tailscale" kube secret. To store state on local disk instead, set
+// "yuntailscale" kube secret. To store state on local disk instead, set
 // TS_KUBE_SECRET="" and TS_STATE_DIR=/path/to/storage/dir. The state dir should
 // be persistent storage.
 //
@@ -82,7 +82,7 @@ func main() {
 		UserspaceMode:   defaultBool("TS_USERSPACE", true),
 		StateDir:        defaultEnv("TS_STATE_DIR", ""),
 		AcceptDNS:       defaultBool("TS_ACCEPT_DNS", false),
-		KubeSecret:      defaultEnv("TS_KUBE_SECRET", "tailscale"),
+		KubeSecret:      defaultEnv("TS_KUBE_SECRET", "yuntailscale"),
 		SOCKSProxyAddr:  defaultEnv("TS_SOCKS5_SERVER", ""),
 		HTTPProxyAddr:   defaultEnv("TS_OUTBOUND_HTTP_PROXY_LISTEN", ""),
 		Socket:          defaultEnv("TS_SOCKET", "/tmp/tailscaled.sock"),
@@ -398,7 +398,7 @@ func tailscaleUp(ctx context.Context, cfg *settings) error {
 		args = append(args, strings.Fields(cfg.ExtraArgs)...)
 	}
 	log.Printf("Running 'tailscale up'")
-	cmd := exec.CommandContext(ctx, "tailscale", args...)
+	cmd := exec.CommandContext(ctx, "yuntailscale", args...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {

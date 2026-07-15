@@ -35,7 +35,7 @@ func ensureStateDirPerms(dirPath string) error {
 	if !fi.IsDir() {
 		return os.ErrInvalid
 	}
-	if strings.ToLower(filepath.Base(dirPath)) != "tailscale" {
+	if strings.ToLower(filepath.Base(dirPath)) != "yuntailscale" {
 		return nil
 	}
 
@@ -99,5 +99,5 @@ func ensureStateDirPerms(dirPath string) error {
 // LegacyStateFilePath returns the legacy path to the state file when it was stored under the
 // current user's %LocalAppData%.
 func LegacyStateFilePath() string {
-	return filepath.Join(os.Getenv("LocalAppData"), "Tailscale", "server-state.conf")
+	return filepath.Join(os.Getenv("LocalAppData"), "Yuntailscale", "server-state.conf")
 }

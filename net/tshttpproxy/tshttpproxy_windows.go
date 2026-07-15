@@ -155,7 +155,7 @@ func proxyFromWinHTTP(ctx context.Context, urlStr string) (proxy *url.URL, err e
 	return url.Parse(v)
 }
 
-var userAgent = windows.StringToUTF16Ptr("Tailscale")
+var userAgent = windows.StringToUTF16Ptr("Yuntailscale")
 
 const (
 	winHTTP_ACCESS_TYPE_DEFAULT_PROXY   = 0

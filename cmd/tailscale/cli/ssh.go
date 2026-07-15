@@ -149,7 +149,7 @@ func writeKnownHosts(st *ipnstate.Status) (knownHostsFile string, err error) {
 	if err != nil {
 		return "", err
 	}
-	tsConfDir := filepath.Join(confDir, "tailscale")
+	tsConfDir := filepath.Join(confDir, "yuntailscale")
 	if err := os.MkdirAll(tsConfDir, 0700); err != nil {
 		return "", err
 	}

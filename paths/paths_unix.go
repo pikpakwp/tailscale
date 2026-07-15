@@ -56,7 +56,7 @@ func stateFileUnix() string {
 	}
 
 	// For non-root users, fall back to $XDG_DATA_HOME/tailscale/*.
-	return filepath.Join(xdgDataHome(), "tailscale", "tailscaled.state")
+	return filepath.Join(xdgDataHome(), "yuntailscale", "tailscaled.state")
 }
 
 func xdgDataHome() string {
@@ -67,7 +67,7 @@ func xdgDataHome() string {
 }
 
 func ensureStateDirPerms(dir string) error {
-	if filepath.Base(dir) != "tailscale" {
+	if filepath.Base(dir) != "yuntailscale" {
 		return nil
 	}
 	fi, err := os.Stat(dir)

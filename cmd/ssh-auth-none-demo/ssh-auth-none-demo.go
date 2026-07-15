@@ -60,13 +60,13 @@ func main() {
 
 	srv := &ssh.Server{
 		Addr:    *addr,
-		Version: "Tailscale",
+		Version: "Yuntailscale",
 		Handler: handleSessionPostSSHAuth,
 		ServerConfigCallback: func(ctx ssh.Context) *gossh.ServerConfig {
 			start := time.Now()
 			return &gossh.ServerConfig{
 				NextAuthMethodCallback: func(conn gossh.ConnMetadata, prevErrors []error) []string {
-					return []string{"tailscale"}
+					return []string{"yuntailscale"}
 				},
 				NoClientAuth: true, // required for the NoClientAuthCallback to run
 				NoClientAuthCallback: func(cm gossh.ConnMetadata) (*gossh.Permissions, error) {

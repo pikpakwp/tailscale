@@ -45,7 +45,7 @@ func parseEmptyDirs(s string) []string {
 
 func main() {
 	out := flag.String("out", "", "output file to write")
-	name := flag.String("name", "tailscale", "package name")
+	name := flag.String("name", "yuntailscale", "package name")
 	description := flag.String("description", "The easiest, most secure, cross platform way to use WireGuard + oauth2 + 2FA/SSO", "package description")
 	goarch := flag.String("arch", "amd64", "GOARCH this package is for")
 	pkgType := flag.String("type", "deb", "type of package to build (deb or rpm)")

@@ -369,7 +369,7 @@ func TestContainerBoot(t *testing.T) {
 			Env: map[string]string{
 				"KUBERNETES_SERVICE_HOST":       kube.Host,
 				"KUBERNETES_SERVICE_PORT_HTTPS": kube.Port,
-				// Explicitly set to an empty value, to override the default of "tailscale".
+				// Explicitly set to an empty value, to override the default of "yuntailscale".
 				"TS_KUBE_SECRET": "",
 				"TS_STATE_DIR":   filepath.Join(d, "tmp"),
 				"TS_AUTHKEY":     "tskey-key",

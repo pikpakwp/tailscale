@@ -61,10 +61,10 @@ func Tailscale() ([]netip.Addr, *net.Interface, error) {
 // maybeTailscaleInterfaceName reports whether s is an interface
 // name that might be used by Tailscale.
 func maybeTailscaleInterfaceName(s string) bool {
-	return s == "Tailscale" ||
+	return s == "Yuntailscale" ||
 		strings.HasPrefix(s, "wg") ||
 		strings.HasPrefix(s, "ts") ||
-		strings.HasPrefix(s, "tailscale") ||
+		strings.HasPrefix(s, "yuntailscale") ||
 		strings.HasPrefix(s, "utun")
 }
 
@@ -499,8 +499,8 @@ func isTailscaleInterface(name string, ips []netip.Prefix) bool {
 		// macOS NetworkExtensions and utun devices.
 		return true
 	}
-	return name == "Tailscale" || // as it is on Windows
-		strings.HasPrefix(name, "tailscale") // TODO: use --tun flag value, etc; see TODO in method doc
+	return name == "Yuntailscale" || // as it is on Windows
+		strings.HasPrefix(name, "yuntailscale") // TODO: use --tun flag value, etc; see TODO in method doc
 }
 
 // getPAC, if non-nil, returns the current PAC file URL.

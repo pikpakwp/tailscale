@@ -34,7 +34,7 @@ func TestDebInfo(t *testing.T) {
 				Version: "1.2.3",
 				Arch:    "amd64",
 				Control: mkControl(
-					"Package", "tailscale",
+					"Package", "yuntailscale",
 					"Version", "1.2.3",
 					"Section", "net",
 					"Priority", "extra",
@@ -50,7 +50,7 @@ func TestDebInfo(t *testing.T) {
 				Version: "1.2.3",
 				Arch:    "arm64",
 				Control: mkControl(
-					"Package", "tailscale",
+					"Package", "yuntailscale",
 					"Version", "1.2.3",
 					"Section", "net",
 					"Priority", "extra",
@@ -66,7 +66,7 @@ func TestDebInfo(t *testing.T) {
 				Version: "1.7.25",
 				Arch:    "amd64",
 				Control: mkControl(
-					"Package", "tailscale",
+					"Package", "yuntailscale",
 					"Version", "1.7.25",
 					"Section", "net",
 					"Priority", "extra",
@@ -161,7 +161,7 @@ func diff(got, want any) string {
 
 func mkTestDeb(version, arch string) []byte {
 	info := nfpm.WithDefaults(&nfpm.Info{
-		Name:        "tailscale",
+		Name:        "yuntailscale",
 		Description: "test package",
 		Arch:        arch,
 		Platform:    "linux",

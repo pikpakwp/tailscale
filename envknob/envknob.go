@@ -434,7 +434,7 @@ func ApplyDiskConfig() (err error) {
 func getPlatformEnvFile() string {
 	switch runtime.GOOS {
 	case "windows":
-		return filepath.Join(os.Getenv("ProgramData"), "Tailscale", "tailscaled-env.txt")
+		return filepath.Join(os.Getenv("ProgramData"), "Yuntailscale", "tailscaled-env.txt")
 	case "linux":
 		if distro.Get() == distro.Synology {
 			return "/etc/tailscale/tailscaled-env.txt"

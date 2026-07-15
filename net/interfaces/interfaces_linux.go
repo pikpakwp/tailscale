@@ -241,7 +241,7 @@ func defaultRouteInterfaceProcNetInternal(bufsize int) (string, error) {
 		ip := fields[1]
 		netmask := fields[7]
 
-		if strings.HasPrefix(ifc, "tailscale") ||
+		if strings.HasPrefix(ifc, "yuntailscale") ||
 			strings.HasPrefix(ifc, "wg") {
 			continue
 		}

@@ -86,23 +86,23 @@ func (fb *fakeBIRD) handle(c net.Conn) {
 }
 
 func TestChirp(t *testing.T) {
-	fb := newFakeBIRD(t, "tailscale")
+	fb := newFakeBIRD(t, "yuntailscale")
 	defer fb.Close()
 	go fb.listen()
 	c, err := New(fb.sock)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if err := c.EnableProtocol("tailscale"); err != nil {
+	if err := c.EnableProtocol("yuntailscale"); err != nil {
 		t.Fatal(err)
 	}
-	if err := c.EnableProtocol("tailscale"); err != nil {
+	if err := c.EnableProtocol("yuntailscale"); err != nil {
 		t.Fatal(err)
 	}
-	if err := c.DisableProtocol("tailscale"); err != nil {
+	if err := c.DisableProtocol("yuntailscale"); err != nil {
 		t.Fatal(err)
 	}
-	if err := c.DisableProtocol("tailscale"); err != nil {
+	if err := c.DisableProtocol("yuntailscale"); err != nil {
 		t.Fatal(err)
 	}
 	if err := c.EnableProtocol("rando"); err == nil {
@@ -183,7 +183,7 @@ func TestChirpTimeout(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	err = c.EnableProtocol("tailscale")
+	err = c.EnableProtocol("yuntailscale")
 	if err == nil {
 		t.Fatal("got err=nil, want timeout")
 	}

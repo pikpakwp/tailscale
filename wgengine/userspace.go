@@ -308,7 +308,7 @@ func NewUserspaceEngine(logf logger.Logf, conf Config) (_ Engine, reterr error) 
 
 	if e.birdClient != nil {
 		// Disable the protocol at start time.
-		if err := e.birdClient.DisableProtocol("tailscale"); err != nil {
+		if err := e.birdClient.DisableProtocol("yuntailscale"); err != nil {
 			return nil, err
 		}
 	}
@@ -953,9 +953,9 @@ func (e *userspaceEngine) Reconfig(cfg *wgcfg.Config, routerCfg *router.Config, 
 		e.logf("wgengine: Reconfig: configuring BIRD")
 		var err error
 		if isSubnetRouter {
-			err = e.birdClient.EnableProtocol("tailscale")
+			err = e.birdClient.EnableProtocol("yuntailscale")
 		} else {
-			err = e.birdClient.DisableProtocol("tailscale")
+			err = e.birdClient.DisableProtocol("yuntailscale")
 		}
 		if err != nil {
 			// Log but don't fail here.
@@ -1098,7 +1098,7 @@ func (e *userspaceEngine) Close() {
 	e.wgdev.Close()
 	e.tundev.Close()
 	if e.birdClient != nil {
-		e.birdClient.DisableProtocol("tailscale")
+		e.birdClient.DisableProtocol("yuntailscale")
 		e.birdClient.Close()
 	}
 	close(e.waitCh)

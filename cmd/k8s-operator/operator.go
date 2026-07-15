@@ -446,7 +446,7 @@ func (a *ServiceReconciler) hasLoadBalancerClass(svc *corev1.Service) bool {
 	return svc != nil &&
 		svc.Spec.Type == corev1.ServiceTypeLoadBalancer &&
 		svc.Spec.LoadBalancerClass != nil &&
-		*svc.Spec.LoadBalancerClass == "tailscale"
+		*svc.Spec.LoadBalancerClass == "yuntailscale"
 }
 
 func (a *ServiceReconciler) hasAnnotation(svc *corev1.Service) bool {

@@ -79,7 +79,7 @@ func (h *Harness) mkVM(t *testing.T, n int, d Distro, sshKey, hostURL, tdir stri
 	if err != nil {
 		t.Fatalf("can't find cache dir: %v", err)
 	}
-	cdir = filepath.Join(cdir, "tailscale", "vm-test")
+	cdir = filepath.Join(cdir, "yuntailscale", "vm-test")
 	os.MkdirAll(filepath.Join(cdir, "qcow2"), 0755)
 
 	port, err := getProbablyFreePortNumber()
@@ -237,7 +237,7 @@ func fetchDistro(t *testing.T, resultDistro Distro) string {
 	if err != nil {
 		t.Fatalf("can't find cache dir: %v", err)
 	}
-	cdir = filepath.Join(cdir, "tailscale", "vm-test")
+	cdir = filepath.Join(cdir, "yuntailscale", "vm-test")
 
 	qcowPath := filepath.Join(cdir, "qcow2", resultDistro.SHA256Sum)
 

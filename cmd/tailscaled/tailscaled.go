@@ -69,7 +69,7 @@ func defaultTunName() string {
 	case "openbsd":
 		return "tun"
 	case "windows":
-		return "Tailscale"
+		return "Yuntailscale"
 	case "darwin":
 		// "utun" is recognized by wireguard-go/tun/tun_darwin.go
 		// as a magic value that uses/creates any free number.
@@ -170,7 +170,7 @@ func main() {
 	flag.BoolVar(&printVersion, "version", false, "print version information and exit")
 	flag.BoolVar(&args.disableLogs, "no-logs-no-support", false, "disable log uploads; this also disables any technical support")
 
-	if len(os.Args) > 0 && filepath.Base(os.Args[0]) == "tailscale" && beCLI != nil {
+	if len(os.Args) > 0 && filepath.Base(os.Args[0]) == "yuntailscale" && beCLI != nil {
 		beCLI()
 		return
 	}
@@ -302,7 +302,7 @@ func ipnServerOpts() (o serverOptions) {
 	// If an absolute --state is provided but not --statedir, try to derive
 	// a state directory.
 	if o.VarRoot == "" && filepath.IsAbs(args.statepath) {
-		if dir := filepath.Dir(args.statepath); strings.EqualFold(filepath.Base(dir), "tailscale") {
+		if dir := filepath.Dir(args.statepath); strings.EqualFold(filepath.Base(dir), "yuntailscale") {
 			o.VarRoot = dir
 		}
 	}

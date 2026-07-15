@@ -995,7 +995,7 @@ var (
 	// stay in the 0-255 range even though linux itself supports
 	// larger numbers. (but nowadays we use netlink directly and
 	// aren't affected by the busybox binary's limitations)
-	tailscaleRouteTable = newRouteTable("tailscale", 52)
+	tailscaleRouteTable = newRouteTable("yuntailscale", 52)
 )
 
 // ipRules are the policy routing rules that Tailscale uses.

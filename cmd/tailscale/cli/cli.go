@@ -141,11 +141,11 @@ func Run(args []string) (err error) {
 		})
 	})
 
-	rootfs := newFlagSet("tailscale")
+	rootfs := newFlagSet("yuntailscale")
 	rootfs.StringVar(&rootArgs.socket, "socket", paths.DefaultTailscaledSocket(), "path to tailscaled socket")
 
 	rootCmd := &ffcli.Command{
-		Name:       "tailscale",
+		Name:       "yuntailscale",
 		ShortUsage: "tailscale [flags] <subcommand> [command flags]",
 		ShortHelp:  "The easiest, most secure way to use WireGuard.",
 		LongHelp: strings.TrimSpace(`

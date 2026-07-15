@@ -56,7 +56,7 @@ func DefaultTailscaledStateFile() string {
 		return f()
 	}
 	if runtime.GOOS == "windows" {
-		return filepath.Join(os.Getenv("ProgramData"), "Tailscale", "server-state.conf")
+		return filepath.Join(os.Getenv("ProgramData"), "Yuntailscale", "server-state.conf")
 	}
 	return ""
 }
