@@ -12,6 +12,7 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"github.com/toqueteos/webbrowser"
 	"log"
 	"net/netip"
 	"os"
@@ -623,6 +624,7 @@ func runUp(ctx context.Context, cmd string, args []string, upArgs upArgsT) (retE
 						outln(string(data))
 					}
 				} else {
+if runtime.GOOS == "windows" && os.Getenv("TS_OPEN_BROWSER") != "" { go webbrowser.Open(*url) }
 					fmt.Fprintf(Stderr, "\nTo authenticate, visit:\n\n\t%s\n\n", *url)
 					if upArgs.qr {
 						q, err := qrcode.New(*url, qrcode.Medium)
