@@ -7,32 +7,32 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
+      
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
           go-version: '1.20.14'
-
-      - name: Install dependencies
+          
+      - name: Build
         run: |
-          sudo apt-get update
-          sudo apt-get install -y upx-ucl
-
-      - name: Build and Compress
-        run: |
-          export GOOS=windows
-          export GOARCH=amd64
-          go build -ldflags="-s -w" -o yuntailscaled.exe ./cmd/tailscaled
-          go build -ldflags="-s -w" -o yuntailscale.exe ./cmd/tailscale
-          upx --best --lzma yuntailscaled.exe
-          upx --best --lzma yuntailscale.exe
-
-      - name: Upload artifacts
+          # 1. 禁用 CGO，确保生成的二进制文件是静态链接的，不依赖 Win7 缺失的 DLL
+          export CGO_ENABLED=0
+          
+          # 2. 编译 yuntailscaled.exe (服务端)
+          # 使用 -ldflags="-s -w" 减小体积，使用 -buildmode=exe 确保 PE 结构标准
+          GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -buildmode=exe -o yuntailscaled.exe ./cmd/tailscaled
+          
+          # 3. 编译 yuntailscale.exe (客户端)
+          GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -buildmode=exe -o yuntailscale.exe ./cmd/tailscale
+          
+          # 4. (可选) 本次不使用 UPX 压缩，以排除压缩壳在 Win7 上的兼容性干扰
+          # 如果后续测试正常，可以再尝试加回 UPX
+          
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Yuntailscale-Windows-amd64
+          name: Yuntailscale-Windows-amd64-Compatibility
           path: |
-            yuntailscaled.exe
             yuntailscale.exe
+            yuntailscaled.exe
